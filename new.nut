@@ -23,7 +23,7 @@ function onPlayerExitVehicle(playerid,carid) {
 }
 function onPlayerIsKilled(playerid,killerid) {
     if(playerid!=killerid) {
-        sendAllMessage("Player "+playerGetName(playerid)+"'s been killed by "+playerGetName(killerid)+".");
+    	sendAllMessage("Player "+playerGetName(playerid)+"'s been killed by "+playerGetName(killerid)+".");
     }
 }
 function onPlayerText(playerid,message) {
@@ -33,10 +33,11 @@ function onPlayerText(playerid,message) {
 function onPlayerCommand(playerid,command,params) {
     switch(command){
         case "me": {
-            sendAllMessage(playerGetName(playerid)+" "+params);
+					sendAllMessage(playerGetName(playerid)+" "+params);
         }
         case "pm": {
-        	
+        	local data = split(params, " ");
+        	sendPlayerMessage(data[0],playerGetName(data[0])+": "+data);
         }
         case "get": {
         	switch(params) {
