@@ -7,10 +7,10 @@ function onServerExit() {
   print("Shutting down the server.");
 }
 function onPlayerSpawn(playerid) {
-
+	playerSetPosition(playerid, -1985.966675, -5.037054, 4.284860);
 }
 function onPlayerConnect(playerid) {
-	sendPlayerMessage("Welcome to "+serverGetName());
+	sendPlayerMessage(format("Welcome to %s",serverGetName()));
 }
 function onPlayerDisconnect(playerid) {
 
