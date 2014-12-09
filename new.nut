@@ -37,27 +37,27 @@ function onPlayerCommand(playerid,command,params) {
         }
         case "pm": {
         	local data = split(params, " ");
-        	sendPlayerMessage(data[0],playerGetName(data[0])+": "+data);
+        	targetid=data[0];
+        	data[0]="\0";
+        	sendPlayerMessage(data[0], format("PM from %s[%d]: %s",playerGetName(data[0]), playerid, data));
         }
         case "get": {
-        	switch(params) {
+        	local data = split(params, " ");
+        	switch(data[0]) {
         		case "online": {
-        			sendPlayerMessage(playerid,"The server has been online for "+seconds_online+" seconds");
+        			sendPlayerMessage(playerid, format("The server has been online for %d seconds", seconds_online));
         		}
         		case "players": {
-        			sendPlayerMessage(plaerid,"There are "+serverGetOnlinePlayers()+" players online");
+        			sendPlayerMessage(playerid, format("There are %d players online", serverGetOnlinePlayers()));
         		}
         		default: {
-        			sendPlayerMessage(playerid,"Server Name: "+serverGetName());
-        			sendPlayerMessage(playerid,"Game Mode: "+serverGetGamemodeName());
-        			sendPlayerMessage(playerid,"Players: "+serverGetOnlinePlayers()+"/"+serverGetMaxPlayers);
+        			sendPlayerMessage(playerid, format("Server Name: %s", serverGetName()));
+        			sendPlayerMessage(playerid, format("Game Mode: %s", serverGetGamemodeName()));
+        			sendPlayerMessage(playerid, format("Players: %d/%d", serverGetOnlinePlayers(), serverGetMaxPlayers()));
         		}
         	}
         }
     }
-}
-function onServerTick(ticks) {
-
 }
 function onServerTickSecond(ticks) {
 	seconds_online++;
