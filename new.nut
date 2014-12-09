@@ -1,4 +1,39 @@
-local seconds_online = 0;
+local
+	seconds_online = 0,
+	weapons=[
+		"Hands",
+		"Boxer",
+		"Knife",
+		"Baseball",
+		"Molotov",
+		"Colt Detective Special",
+		"S&W Model Magnum",
+		"S&W Model 10 M&P",
+		"Colt 1911",
+		"Thomson 1928",
+		"Pumping Shotgun",
+		"Sawed-Off Shotgun",
+		"US Rifle M1903 Springfield",
+		"Mosin Nagant 1891/30",
+		"Granadev",
+		"Key",
+		"Jar",
+		"Flash-lamp",
+		"Documents",
+		"Iron staff",
+		"Papers",
+		"Dynamit",
+		"Keys",
+		"Safe-deposit key",
+		"Crowbar",
+		"Tickets",
+		"Packet",
+		"Prkno",
+		"Bottle",
+		"Small key",
+		"Sword",
+		"Dog head"
+	];
 function onServerInit() {
   print("Blank script loaded");
   serverSetGamemodeName("Blank Server");
@@ -23,7 +58,7 @@ function onPlayerExitVehicle(playerid,carid) {
 }
 function onPlayerIsKilled(playerid,killerid) {
     if(playerid!=killerid) {
-    	sendAllMessage(format("Player %s has been killed by %s with ", playerGetName(playerid), playerGetName(killerid));
+    	sendAllMessage(format("Player %s has been killed by %s with %s", playerGetName(playerid), playerGetName(killerid), weapons[playerGetWeaponID()]);
     }
 }
 function onPlayerText(playerid,message) {
@@ -38,7 +73,7 @@ function onPlayerCommand(playerid,command,params) {
         case "pm": {
         	local data = split(params, " ");
         	targetid=data[0];
-        	data[0]="\0";
+        	data[0]=null;
         	sendPlayerMessage(data[0], format("PM from %s[%d]: %s",playerGetName(data[0]), playerid, data));
         }
         case "get": {
