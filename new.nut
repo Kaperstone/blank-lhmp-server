@@ -34,37 +34,47 @@ local
 		"Sword",
 		"Dog head"
 	];
+	
 function onServerInit() {
   print("Blank script loaded");
   serverSetGamemodeName("Blank Server");
 }
+
 function onServerExit() {
   print("Shutting down the server.");
 }
+
 function onPlayerSpawn(playerid) {
 	playerSetPosition(playerid, -1985.966675, -5.037054, 4.284860);
 }
+
 function onPlayerConnect(playerid) {
 	sendPlayerMessage(format("Welcome to %s",serverGetName()));
 }
+
 function onPlayerDisconnect(playerid) {
 
 }
+
 function onPlayerEnterVehicle(playerid,carid,seatid) {
 
 }
+
 function onPlayerExitVehicle(playerid,carid) {
 
 }
+
 function onPlayerIsKilled(playerid,killerid) {
     if(playerid!=killerid) {
     	sendAllMessage(format("Player %s has been killed by %s with %s", playerGetName(playerid), playerGetName(killerid), weapons[playerGetWeaponID()]);
     }
 }
+
 function onPlayerText(playerid,message) {
     sendAllMessage("<"+playerGetName(playerid)+"> "+message);
     return false;
 }
+
 function onPlayerCommand(playerid,command,params) {
     switch(command){
         case "me": {
@@ -94,6 +104,7 @@ function onPlayerCommand(playerid,command,params) {
         }
     }
 }
+
 function onServerTickSecond(ticks) {
 	seconds_online++;
 }
