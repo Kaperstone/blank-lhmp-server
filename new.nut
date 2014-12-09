@@ -23,7 +23,7 @@ function onPlayerExitVehicle(playerid,carid) {
 }
 function onPlayerIsKilled(playerid,killerid) {
     if(playerid!=killerid) {
-    	sendAllMessage("Player "+playerGetName(playerid)+"'s been killed by "+playerGetName(killerid)+".");
+    	sendAllMessage(format("Player %s has been killed by %s with ", playerGetName(playerid), playerGetName(killerid));
     }
 }
 function onPlayerText(playerid,message) {
